@@ -1,0 +1,41 @@
+doctype html
+html
+    head
+        title Login
+        include header.jade
+    body
+        .container
+            .row
+                form.form-horizontal(action="/login", method="POST")
+                    fieldset
+                        legend Login
+                        span
+                            if flash.error
+                                .alert.alert-danger.fade.in
+                                    a.close(href='#', data-dismiss='alert', aria-label='close', title='close') ×
+                                    strong #{flash.error}
+
+                        .form-group
+                            label.col-md-2.control-label(for='cnpj') CNPJ:
+                            .col-md-4
+                                input#cnpj.form-control.input-md(name='cnpj', type='text', placeholder='00.000.000/0000-00')
+                                span.help-block Enter the CNPJ
+
+                        .form-group
+                            label.col-md-2.control-label(for='username') Username:
+                            .col-md-4
+                                input#username.form-control.input-md(name='username', type='text', autofocus)
+                                span.help-block Enter your username
+
+                        .form-group
+                            label.col-md-2.control-label(for='password') Password:
+                            .col-md-4
+                                input#password.form-control.input-md(name='password', type='password')
+                                span.help-block Enter your password
+
+                        .form-group
+                            label.col-md-2.control-label(for='singlebutton')
+                            .col-md-4
+                                button#singlebutton.btn.btn-primary(name="singlebutton") Login
+
+        include footer.jade
